@@ -10,8 +10,8 @@ spec:
   replicas: 1
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 1
+      maxUnavailable: 0
     type: RollingUpdate
   template:
     metadata:
@@ -48,3 +48,57 @@ spec:
         ports:
         - containerPort:  80
           name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  sample-web
+  namespace: kube-basic
+  labels:
+    app:  sample-web
+spec:
+  selector:
+    matchLabels:
+      app: sample-web
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  sample-web
+    spec:
+      containers:
+      - name:  sample-web
+        image:  yeasy/simple-web
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        ports:
+        - containerPort:  80
+          name:  sample-web
