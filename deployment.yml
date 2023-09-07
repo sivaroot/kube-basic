@@ -27,7 +27,7 @@ spec:
         image: nginx:alpine
         volumeMounts:
           - name: nginx-config
-            mountPath: /etc/nginx/nginx.conf
+            mountPath: /etc/nginx/conf.d/nginx.conf
             subPath: nginx.conf
         resources:
           requests:
