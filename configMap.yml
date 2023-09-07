@@ -4,7 +4,7 @@ metadata:
   name: nginx-config
   namespace: kube-basic
 data:
-  key: |
+  nginx.conf: |
     server {
       listen 80;
       server_name _;
