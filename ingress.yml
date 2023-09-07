@@ -10,11 +10,14 @@ metadata:
 spec:
   rules: 
   - host: 'kube-basic.lessex.company'
-    http: 
-      paths: 
-      - path: '/'
-        backend: 
-          serviceName: app-nginx
-          servicePort: 80
-        property:
-          ingress.beta.kubernetes.io/url-match-mode: STARTS_WITH
+    http:
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: app-nginx
+              port:
+                number: 3000
+          property:
+            ingress.beta.kubernetes.io/url-match-mode: STARTS_WITH
