@@ -18,9 +18,17 @@ spec:
       labels:
         app: app-nginx
     spec:
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
       containers:
       - name: app-nginx
         image: nginx:alpine
+        volumeMounts:
+          - name: nginx-config
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
         resources:
           requests:
             cpu: 100m
