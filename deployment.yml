@@ -31,10 +31,10 @@ spec:
             subPath: nginx.conf
         resources:
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 100Mi
           limits:
-            cpu: 100m
+            cpu: 50m
             memory: 100Mi
         livenessProbe:
           tcpSocket:
@@ -84,10 +84,10 @@ spec:
         image:  yeasy/simple-web
         resources:
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 100Mi
           limits:
-            cpu: 100m
+            cpu: 50m
             memory: 100Mi
         livenessProbe:
           httpGet:
