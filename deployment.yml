@@ -30,10 +30,10 @@ spec:
             mountPath: /etc/nginx/conf.d
         resources:
           requests:
-            cpu: 50m
+            cpu: 100m
             memory: 100Mi
           limits:
-            cpu: 50m
+            cpu: 100m
             memory: 100Mi
         livenessProbe:
           tcpSocket:
