@@ -13,3 +13,13 @@ data:
         return 200 "Sivaroot";
       }
     }
+  default-2.conf: |
+    server {
+      listen 80;
+      server_name _;
+
+      location / {
+        return 200 "Sivaroot 2";
+      }
+    }
+  
