@@ -5,7 +5,8 @@ metadata:
   namespace: kube-basic
 spec:
   selector:
-    app: app-nginx
+    matchLabels:
+      app: app-nginx
   replicas: 1
   strategy:
     rollingUpdate:
